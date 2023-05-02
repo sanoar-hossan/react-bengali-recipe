@@ -38,12 +38,13 @@ const router = createBrowserRouter([
         path:'blog',
         element:<Blog></Blog>,
           },
+          {
+            path:'chefrecipe',
+            element:<Chefrecipe></Chefrecipe>
+              },
     ],
   },
-  {
-    path:'chefrecipe',
-    element:<Chefrecipe></Chefrecipe>
-      },
+  
       {
         path:'chefrecipedetails',
         element:<ChefrecipeDetails></ChefrecipeDetails>,
