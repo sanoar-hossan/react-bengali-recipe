@@ -14,6 +14,7 @@ import Register from './components/Register';
 import Blog from './components/Blog';
 import Chefrecipe from './Chef-recipe/Chefrecipe';
 import ChefrecipeDetails from './Chef-recipe/ChefrecipeDetails';
+import AuthProvider from './providers/Authprovider';
 
 
 const router = createBrowserRouter([
@@ -39,8 +40,9 @@ const router = createBrowserRouter([
         element:<Blog></Blog>,
           },
           {
-            path:'chefrecipe',
-            element:<Chefrecipe></Chefrecipe>
+            path:'chefrecipe/:chefrecipeId',
+            element:<Chefrecipe></Chefrecipe>,
+            loader:({params})=>fetch(`https://recipe-server-sanoar-hossan.vercel.app/recipedetails/$${params.chefrecipeId}`)
               },
     ],
   },
@@ -55,6 +57,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <RouterProvider router={router} />
+   <AuthProvider><RouterProvider router={router} /></AuthProvider>
   </React.StrictMode>,
 )

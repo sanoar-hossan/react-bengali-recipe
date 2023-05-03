@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import profile from '../assets/profile.jpg'
+import { AuthContext } from '../providers/Authprovider';
 
 const Header = () => {
+
+
+
+  const {logOut}=useContext(AuthContext)
+
+  const handleSignOut=()=>{
+
+logOut()
+.then(result=>{
+
+})
+.catch(error=>
+  console.log(error))
+  }
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -27,6 +42,8 @@ const Header = () => {
   <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img src={profile} />
+          
+          <button onClick={handleSignOut}>SignOut</button>
         </div>
       </label>
   </div>

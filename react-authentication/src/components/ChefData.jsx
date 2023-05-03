@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ChefData = () => {
 const [chefinfos,setchefinfos]=useState([]);
@@ -19,7 +20,9 @@ fetch('https://recipe-server-sanoar-hossan.vercel.app/chefdetails')
                   <h2 className="card-title">{chefinfo.name}</h2>
                   <p>If a dog chews shoes whose shoes does he choose?</p>
                   <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                  <Link to={`/chefrecipe/${chefinfo.id}`}>
+  <button className="btn btn-primary">View Recipe</button>
+</Link>
                   </div>
                 </div>
               </div>)
