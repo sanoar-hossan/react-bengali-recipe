@@ -37,7 +37,7 @@ const githubSignIn=()=>{
     },[])
 
 const authInfo={
-   
+   user,
 createUser,
 signIn,
 logOut,

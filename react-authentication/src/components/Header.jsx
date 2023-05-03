@@ -7,7 +7,7 @@ const Header = () => {
 
 
 
-  const {logOut}=useContext(AuthContext)
+  const {logOut,user}=useContext(AuthContext)
 
   const handleSignOut=()=>{
 
@@ -37,15 +37,17 @@ logOut()
       <li><Link to='/register'>Register</Link></li>
       <li><Link to='/blog'>Blog</Link></li>
     </ul>
+   
   </div>
   <div className="navbar-end">
-  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        <div className="w-10 rounded-full">
-          <img src={profile} />
+  
+        <div>
+        {user ? user.email:
           
-          <button onClick={handleSignOut}>SignOut</button>
+          <button className='text-black' onClick={handleSignOut}>SignOut</button>
+        }
         </div>
-      </label>
+     
   </div>
 </div>
     );

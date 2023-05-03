@@ -7,7 +7,7 @@ import { AuthContext } from '../providers/Authprovider';
 const Login = () => {
   const {signIn,googleSignIn,githubSignIn}=useContext(AuthContext)
   
-  const [user,setUser]=useState('')
+  const [user,setUser]=useState(null)
 const [error,setError]=useState('')
 
 const handleGoogle=()=>{
