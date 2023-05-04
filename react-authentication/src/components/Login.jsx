@@ -50,7 +50,7 @@ setError('')
       
     })
     .catch(error=>{
-      setError(error.message)
+      setError(error)
     })
 
    
@@ -89,7 +89,7 @@ setError('')
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
-        <div>{error}</div>
+        <div className='text-danger'>{error && error}</div>
         </form>
         <div><img onClick={handleGoogle} className='w-15 p-4' src={google} alt="" /></div>
         <div onClick={handleGithub}><img className='w-45 p-2' src={github} alt="" /></div>
