@@ -14,7 +14,7 @@ const Banner = () => {
     <div className="max-w-md">
       <h1 className="mb-5 text-5xl font-bold">Welcome to Bengali Recipe!</h1>
       <p className="mb-5">Try all kind of Bengali foods and enjoy.</p>
-      <button className="btn btn-primary">Explore All Recipe</button>
+      <button className="bg-blue-700  hover:bg-blue-400 text-white font-bold py-2 px-4 rounded mt-4">Explore All Recipe</button>
     </div>
   </div>
 </div>

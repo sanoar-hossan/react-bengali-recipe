@@ -10,7 +10,7 @@ const Special = () => {
     <div>
       <h1 className="text-5xl font-bold">Our Special Menu</h1>
       <p className="py-6">Are you intimidated by the thought of cooking a whole fish? Please don’t be. Whole fish is one of the most sensational and delicious ways of cooking fish at home. There’s more meat off of each fish, and less waste. It’s so much fun to tear into a whole fish at the table. There’s something primal about it. Cooking a whole fish is also a dramatic way to serve your family, friends and guests while enjoying the “oohs” and “aahs” from them.</p>
-      <Link to='/chefrecipe/2'><button className="btn btn-primary">Try It</button></Link>
+      <Link to='/chefrecipe/2'><button className="  bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Try It</button></Link>
     </div>
   </div>
 </div>
