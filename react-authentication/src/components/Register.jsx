@@ -3,47 +3,51 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../providers/Authprovider';
 
 const Register = () => {
- const [user,setuser]=useState(null)
-  const [error,seterror]=useState('')
-const {createUser}=useContext(AuthContext);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState('');
+  const { createUser } = useContext(AuthContext);
+  
 
-    const handleRegister=(event)=>{
-      event.preventDefault();
-      const form=event.target;
-      const username=form.name.value;
-      const email=form.email.value;
-      const password=form.password.value;
-      const userphoto=form.photo.value;
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const username = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const userphoto = form.photo.value;
 
-      if (password.length<6) {
-        seterror('password should at least 6 charecter');
-        return
-      }
-seterror('')
-      createUser(email,password) 
-      .then(result=>{
-        const loggedUser=result.user;
-        console.log(loggedUser);
-        setuser(loggedUser);
-      })
-  .catch(error=>{
-    seterror(error.message);
-  })
-      
-
-
-
-
+    if (password.length < 6) {
+      setError('password should at least 6 charecter');
+      return;
     }
 
+    setError('');
 
-
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        setUser(loggedUser);
+        form.reset();
+        
+      })
+      // updateUserdata(username,userphoto)
+      // .then((result) => {
+      //   const updatedUser = result.user;
+      //   console.log(updatedUser);
+      //   setUpdateUser(updatedUser);
+      // })
+      // .catch((error) => {
+      //   setError(error.message);
+      // });
+  };
 
     return (
         <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col">
     <div className="text-center ">
       <h1 className="text-5xl font-bold">Register now!</h1>
+      
       
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -53,7 +57,7 @@ seterror('')
           <label className="label">
             <span className="label-text">Name</span>
           </label>
-          <input name='name' type="text" placeholder="name" className="input input-bordered" />
+          <input name='name' type="text" placeholder="Your name" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">

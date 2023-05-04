@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const ChefData = () => {
 const [chefinfos,setchefinfos]=useState([]);
@@ -12,9 +13,11 @@ fetch('https://recipe-server-sanoar-hossan.vercel.app/chefdetails')
 
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <h1 className="col-span-full">Chef Information</h1>
+      <h1 className="col-span-full text-center font-bold p-6">Chef Information</h1>
+       
       {chefinfos.map(chefinfo => (
-        <div key={chefinfo.id}>
+        <LazyLoad key={chefinfo.id} height={562}>
+        <div >
         <div className="bg-base-100 shadow-xl rounded-lg overflow-hidden">
           <img className="w-full h-48 object-cover" src={chefinfo.picture} alt={chefinfo.name} />
           <div className="px-6 py-4">
@@ -31,7 +34,9 @@ fetch('https://recipe-server-sanoar-hossan.vercel.app/chefdetails')
             </Link>
           </div>
         </div>
+       
       </div>
+      </LazyLoad>
       ))}
     </div>
     );

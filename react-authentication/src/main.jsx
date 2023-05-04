@@ -15,6 +15,7 @@ import Blog from './components/Blog';
 import Chefrecipe from './Chef-recipe/Chefrecipe';
 
 import AuthProvider from './providers/Authprovider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
           },
           {
             path:'chefrecipe/:id',
-            element:<Chefrecipe></Chefrecipe>,
+            element:<PrivateRoute><Chefrecipe></Chefrecipe></PrivateRoute>,
             loader:({params})=>fetch(`https://recipe-server-sanoar-hossan.vercel.app/recipedetails/${params.id}`)
               },
     ],

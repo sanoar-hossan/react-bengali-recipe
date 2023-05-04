@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react';
 import google from '../assets/google-signin-button.png'
 import github from '../assets/github-sign-in.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/Authprovider';
 
 const Login = () => {
   const {signIn,googleSignIn,githubSignIn}=useContext(AuthContext)
+  const navigate=useNavigate();
   
   const [user,setUser]=useState(null)
 const [error,setError]=useState('')
+
+const location=useLocation()
+const form=location.state?.form?.pathname || '/';
 
 const handleGoogle=()=>{
   googleSignIn()
@@ -46,7 +50,10 @@ setError('')
       const loginUser=result.user;
       console.log(user);
       setUser(loginUser);
+
+      navigate(from,{replace:true})
       form.reset();
+      
       
     })
     .catch(error=>{

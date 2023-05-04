@@ -44,8 +44,11 @@ logOut()
         <div>
         {user ? user.email:
           
-          <button className='text-black' onClick={handleSignOut}>SignOut</button>
+          <Link to='/login'><button className='text-black' >Log In</button></Link>
         }
+        </div>
+        <div>
+          {user&& <button className='text-black px-4' onClick={handleSignOut}>Log Out</button>}
         </div>
      
   </div>

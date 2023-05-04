@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
 import ChefData from './ChefData';
+import Special from '../extra-section/Special';
 
 const Home = () => {
     return (
@@ -12,6 +13,9 @@ const Home = () => {
        
           <ChefData></ChefData>
         
+      </div>
+      <div className="special py-7">
+        <Special></Special>
       </div>
         </div>
     );
