@@ -9,8 +9,10 @@ const Home = () => {
             <Banner></Banner>
            </div>
            <div className="chefdata flex flex-col-reverse">
-            <ChefData></ChefData>
-           </div>
+       
+          <ChefData></ChefData>
+        
+      </div>
         </div>
     );
 };

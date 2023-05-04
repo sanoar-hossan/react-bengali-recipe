@@ -13,7 +13,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Blog from './components/Blog';
 import Chefrecipe from './Chef-recipe/Chefrecipe';
-import ChefrecipeDetails from './Chef-recipe/ChefrecipeDetails';
+
 import AuthProvider from './providers/Authprovider';
 
 
@@ -40,17 +40,13 @@ const router = createBrowserRouter([
         element:<Blog></Blog>,
           },
           {
-            path:'chefrecipe/:chefrecipeId',
+            path:'chefrecipe/:id',
             element:<Chefrecipe></Chefrecipe>,
-            loader:({params})=>fetch(`https://recipe-server-sanoar-hossan.vercel.app/recipedetails/$${params.chefrecipeId}`)
+            loader:({params})=>fetch(`https://recipe-server-sanoar-hossan.vercel.app/recipedetails/${params.id}`)
               },
     ],
   },
   
-      {
-        path:'chefrecipedetails/:id',
-        element:<ChefrecipeDetails></ChefrecipeDetails>,
-          },
   
   
 ]);
