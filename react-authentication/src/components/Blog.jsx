@@ -1,25 +1,21 @@
 import React from 'react';
-import { useRef } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import PropTypes from 'prop-types';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 
 const Blog = () => {
-    const pdfRef = useRef(null);
-
-    const downloadPdf = () => {
-      const content = pdfRef.current;
-      const pdfGenerator = () => {
-        return pdfRef.current.toBlob();
-      };
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([pdfGenerator()], { type: 'application/pdf' }));
-      a.download = 'blog.pdf';
-      a.click();
-    };
+  const downloadPdf = () => {
+    const input = document.getElementById('blog-content');
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'PNG', 0, 0);
+      pdf.save('blog.pdf');
+    });
+  };
     return (
-        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+        <div id="blog-content" className="bg-white shadow-md rounded-lg overflow-hidden">
       
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center">Question</div>

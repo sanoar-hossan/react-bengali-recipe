@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useRouteError } from 'react-router-dom'
-
+import errors from '../assets/404.jpg'
 const ErrorPage = () => {
   const { error, status } = useRouteError()
   return (
@@ -9,6 +9,7 @@ const ErrorPage = () => {
         
         <div className='max-w-md text-center'>
           <h2 className='mb-8 font-extrabold text-9xl text-yellow-500'>
+            <img className='py-10' src={errors} alt="" />
             <span className='sr-only'>Error</span>
             {status || 404}
           </h2>

@@ -7,7 +7,7 @@ const Chefrecipe = () => {
     const [isFavorite, setIsFavorite] = useState(false);
 const recipedata=useLoaderData()
 console.log(recipedata);
-//const [singleChef,setsingleChef]=useState(recipeId);
+
 const { name, ingredients, bio, chef, recipes,likes,num_recipes,picture,experience_years,cooking_method,rating } = recipedata;
 
 const handleFavoriteClick = () => {
@@ -22,7 +22,7 @@ const handleFavoriteClick = () => {
             
         {/* Chef card */}
         <div className="bg-base-100 shadow-xl rounded-lg overflow-hidden col-span-1 md:col-span-2 lg:col-span-1">
-          <img className="w-full h-70 object-cover" src={chef.picture}  />
+          <img className="w-full h-50 object-cover rounded" src={chef.picture}  />
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{chef.name}</div>
             <p className="text-gray-700 text-base mb-2 flex">{chef.bio}</p>
@@ -35,7 +35,7 @@ const handleFavoriteClick = () => {
         
           <div className="bg-base-100 shadow-xl rounded-lg overflow-hidden col-span-1 md:col-span-2 lg:col-span-1">
             <div className="px-6 py-4">
-               <img className="w-full h-70 object-cover" src={picture}  />
+               <img className="w-full h-40 object-cover rounded" src={picture}  />
               <div className="font-bold text-xl mb-2">{name}</div>
               
               <p className="text-gray-700 text-base mb-2">{cooking_method}</p>

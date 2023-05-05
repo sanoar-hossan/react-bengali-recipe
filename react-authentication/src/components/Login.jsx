@@ -10,9 +10,10 @@ const Login = () => {
   
   const [user,setUser]=useState(null)
 const [error,setError]=useState('')
+const [success,setsuccess]=useState('')
 
 const location=useLocation()
-const form=location.state?.form?.pathname || '/';
+
 
 const handleGoogle=()=>{
   googleSignIn()
@@ -20,6 +21,7 @@ const handleGoogle=()=>{
 const googleuser=result.user;
 console.log(googleuser);
 setUser(googleuser)
+setsuccess('Login success')
   })
   .catch(error=>{
     setError(error);
@@ -31,6 +33,7 @@ const handleGithub=()=>{
 const githubuser=result.user;
 console.log(githubuser);
 setUser(githubuser);
+setsuccess('Login success')
   })
   .catch(error=>{
     setError(error)
@@ -50,10 +53,10 @@ setError('')
       const loginUser=result.user;
       console.log(user);
       setUser(loginUser);
-
+      setsuccess('Login success')
       navigate(from,{replace:true})
       form.reset();
-      
+      const form=location.state?.form?.pathname || '/';
       
     })
     .catch(error=>{
@@ -81,13 +84,13 @@ setError('')
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input name='email' type="text" placeholder="email" className="input input-bordered" />
+          <input name='email' type="text" placeholder="email" className="input input-bordered " required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input name='password' type="password" placeholder="password" className="input input-bordered" />
+          <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
           <label className="label">
           <p>New User ? Please <Link to='/register' className="label-text-alt link link-hover">Register</Link></p>
             
@@ -96,7 +99,7 @@ setError('')
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
-        <div className='text-danger'>{error && error}</div>
+        <div className='text-danger'>{error ?  error : success}</div>
         </form>
         <div><img onClick={handleGoogle} className='w-15 p-4' src={google} alt="" /></div>
         <div onClick={handleGithub}><img className='w-45 p-2' src={github} alt="" /></div>
